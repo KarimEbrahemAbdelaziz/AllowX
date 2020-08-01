@@ -1,0 +1,16 @@
+PODS:
+  - AllowX (0.1.0)
+
+DEPENDENCIES:
+  - AllowX (from `../`)
+
+EXTERNAL SOURCES:
+  AllowX:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AllowX: 8844b15f023160b79650f112525763ac1d5527ba
+
+PODFILE CHECKSUM: 7334fcae3b0baa352064d1c2abefd8545e2efbca
+
+COCOAPODS: 1.9.3
