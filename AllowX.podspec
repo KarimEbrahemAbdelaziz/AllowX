@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'AllowX'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of AllowX.'
+  s.summary          = 'AllowX to ask for permissions on iOS ❓👀.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,22 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+AllowX is a zero setup and unified API to ask for permissions on iOS ❓👀.
                        DESC
 
-  s.homepage         = 'https://github.com/KarimEbrahem/AllowX'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/KarimEbrahemAbdelaziz/AllowX'
+  s.screenshots = 'https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/3.png?raw=true'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'KarimEbrahem' => 'karimabdelazizmansour@gmail.com' }
-  s.source           = { :git => 'https://github.com/KarimEbrahem/AllowX.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'KarimEbrahemAbdelaziz' => 'karimabdelazizmansour@gmail.com' }
+  s.source           = { :git => 'https://github.com/KarimEbrahemAbdelaziz/AllowX.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/KarimEbrahem512'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
+  s.swift_version = '5.0'
 
   s.source_files = 'AllowX/Classes/**/*'
+  s.resources = 'AllowX/Assets/*'
   
-  # s.resource_bundles = {
-  #   'AllowX' => ['AllowX/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit'
+  s.dependency 'SwiftEntryKit', '1.2.3'
 end
