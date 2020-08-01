@@ -7,17 +7,25 @@
 //
 
 import UIKit
+import AllowX
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        let permission: AllowX = .camera
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        print(permission.status) // .notDetermined
+
+        permission.request { status in
+            switch status {
+            case .authorized:    print("authorized")
+            case .denied:        print("denied")
+            case .disabled:      print("disabled")
+            case .notDetermined: print("not determined")
+            }
+        }
     }
 
 }
