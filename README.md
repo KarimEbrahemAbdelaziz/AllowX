@@ -99,14 +99,20 @@ cameraPermission.confirmButtonTitle = "Allow Permission"
 By default AllowX will ask for permission and present corresponding dialog for the permission's status, but you can disable presenting those dialogs
 
 ```swift
+// Control if you want to present Pre-Premission dialog.
 cameraPermission.presentPrePermissionAlert = true
+
+// Control if you want to present Denied dialog.
 cameraPermission.presentDeniedAlert = true
+
+// Control if you want to present Disabled dialog.
 cameraPermission.presentDisabledAlert = true
 ```
 
 You can specifiy a block of code to be excuted when you ask about permission's status
 
 ```swift
+// Ask for Premission 🔥
 cameraPermission.request { status in
     switch status {
     case .authorized:    print("authorized")
@@ -120,7 +126,6 @@ cameraPermission.request { status in
 ## Author
 
 Karim Ebrahem, karimabdelazizmansour@gmail.com
-You can find me on Twitter [@k_ebrahem_](https://twitter.com/k_ebrahem_).
 
 ## License
 
