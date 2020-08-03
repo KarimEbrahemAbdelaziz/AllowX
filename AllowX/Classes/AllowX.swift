@@ -29,31 +29,6 @@ import UserNotifications
 public class AllowX: NSObject {
     public typealias Callback = (AllowXStatus) -> Void
     
-    /// The permission to access the user's location when the app is in background.
-    public static let locationAlways = AllowX(type: .locationAlways)
-    
-    /// The permission to access the user's location when the app is in use.
-    public static let locationWhenInUse = AllowX(type: .locationWhenInUse)
-    
-    /// The permission to access the camera.
-    public static let camera = AllowX(type: .camera)
-    
-    /// The permission to send notifications.
-    public static let notifications: AllowX = {
-        let options: UNAuthorizationOptions = [.badge, .sound, .alert]
-        return AllowX(type: .notifications(options))
-    }()
-    
-    /// Variable used to retain the notifications permission.
-    private static var _notifications: AllowX?
-    
-    /// The permission to send notifications.
-    public static func notifications(options: UNAuthorizationOptions) -> AllowX {
-        let permission = AllowX(type: .notifications(options))
-        _notifications = permission
-        return permission
-    }
-    
     /// The permission domain.
     public let type: AllowXType
     
@@ -68,7 +43,37 @@ public class AllowX: NSObject {
     }
     
     /// The primaryColor for confirm button background color.
-    public static var primaryColor: UIColor = UIColor.cyan
+    public static var primaryColor: UIColor = UIColor.systemBlue
+    
+    /// The camera permission default image.
+    internal let cameraPermissionImage: UIImage = UIImage(named: "img_graphics_no_search_results_1", in: Bundle(for: AllowX.self), compatibleWith: nil)!
+    
+    /// The location permission default image.
+    internal let locationPermissionImage: UIImage = UIImage(named: "img_graphics_map", in: Bundle(for: AllowX.self), compatibleWith: nil)!
+    
+    /// The notification permission default image.
+    internal let notificationPermissionImage: UIImage = UIImage(named: "img_graphics_notification", in: Bundle(for: AllowX.self), compatibleWith: nil)!
+    
+    /// The permission image.
+    public var image: UIImage?
+    
+    /// The notification permission title.
+    public var title: String?
+    
+    /// The notification permission message.
+    public var message: String?
+    
+    /// The notification permission cancel button title.
+    public var cancelButtonTitle: String?
+    
+    /// The notification permission not now button title.
+    public var notNowButtonTitle: String?
+    
+    /// The notification permission go to settings button title.
+    public var goToSettingsButtonTitle: String?
+    
+    /// The notification permission allow button title.
+    public var confirmButtonTitle: String?
     
     /// Determines whether to present the pre-permission alert.
     public var presentPrePermissionAlert = true
@@ -176,7 +181,7 @@ public class AllowX: NSObject {
      
      - returns: A newly created permission.
      */
-    private init(type: AllowXType) {
+    public init(type: AllowXType) {
         self.type = type
     }
     
@@ -191,10 +196,14 @@ public class AllowX: NSObject {
         let status = self.status
         
         switch status {
-        case .authorized:    callbacks(status)
-        case .notDetermined: presentPrePermissionAlert ? showPrePermissionAlert() : requestAuthorization(callbacks)
-        case .denied:        presentDeniedAlert ? showDeniedAlert() : callbacks(status)
-        case .disabled:      presentDisabledAlert ? showDisabledAlert() : callbacks(status)
+        case .authorized:
+            callbacks(status)
+        case .notDetermined:
+            presentPrePermissionAlert ? showPrePermissionAlert() : requestAuthorization(callbacks)
+        case .denied:
+            presentDeniedAlert ? showDeniedAlert() : callbacks(status)
+        case .disabled:
+            presentDisabledAlert ? showDisabledAlert() : callbacks(status)
         }
     }
     
@@ -214,15 +223,15 @@ public class AllowX: NSObject {
     }
     
     func showPrePermissionAlert() {
-        SwiftEntryKit.display(entry: PrePermissionAlert(permission: self), using: attributes)
+        SwiftEntryKit.display(entry: prePermissionAlert, using: attributes)
     }
     
     func showDeniedAlert() {
-        SwiftEntryKit.display(entry: DeniedAlert(permission: self), using: attributes)
+        SwiftEntryKit.display(entry: deniedAlert, using: attributes)
     }
     
     func showDisabledAlert() {
-        SwiftEntryKit.display(entry: DisabledAlert(permission: self), using: attributes)
+        SwiftEntryKit.display(entry: disabledAlert, using: attributes)
     }
     
 }
