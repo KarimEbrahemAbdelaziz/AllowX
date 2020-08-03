@@ -23,21 +23,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_graphics_notification" translatesAutoresizingMaskIntoConstraints="NO" id="l6I-cR-dKr">
-                    <rect key="frame" x="139.5" y="24" width="135.5" height="135.5"/>
+                    <rect key="frame" x="175" y="32" width="64" height="64"/>
                     <accessibility key="accessibilityConfiguration" identifier="action_alert_imageView"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="l6I-cR-dKr" secondAttribute="height" multiplier="1:1" id="VNF-bB-vlC"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GM8-cf-bvm">
-                    <rect key="frame" x="32" y="163.5" width="350" height="29"/>
+                    <rect key="frame" x="32" y="120" width="350" height="29"/>
                     <accessibility key="accessibilityConfiguration" identifier="action_alert_title_label"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Enable push notifications to let send you personal news and updates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6b-PP-Jf1">
-                    <rect key="frame" x="24" y="196.5" width="366" height="38.5"/>
+                    <rect key="frame" x="24" y="153" width="366" height="38.5"/>
                     <accessibility key="accessibilityConfiguration" identifier="action_alert_description_label"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <nil key="textColor"/>
@@ -69,11 +69,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="l6I-cR-dKr" firstAttribute="centerX" secondItem="daT-2N-wm8" secondAttribute="centerX" id="5ua-Vg-oOb"/>
-                <constraint firstItem="GM8-cf-bvm" firstAttribute="top" secondItem="l6I-cR-dKr" secondAttribute="bottom" constant="4" id="CZn-j5-8kR"/>
+                <constraint firstItem="GM8-cf-bvm" firstAttribute="top" secondItem="l6I-cR-dKr" secondAttribute="bottom" constant="24" id="CZn-j5-8kR"/>
                 <constraint firstItem="F6b-PP-Jf1" firstAttribute="top" secondItem="GM8-cf-bvm" secondAttribute="bottom" constant="4" id="M7Z-Rx-KUK"/>
                 <constraint firstItem="6Dr-Bt-JgN" firstAttribute="trailing" secondItem="GM8-cf-bvm" secondAttribute="trailing" constant="32" id="TEB-fG-Lzn"/>
                 <constraint firstItem="89M-Bn-WS9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="F6b-PP-Jf1" secondAttribute="bottom" constant="16" id="X6Y-T5-XJb"/>
-                <constraint firstItem="l6I-cR-dKr" firstAttribute="top" secondItem="daT-2N-wm8" secondAttribute="top" constant="24" id="aCD-hh-nGS"/>
+                <constraint firstItem="l6I-cR-dKr" firstAttribute="top" secondItem="daT-2N-wm8" secondAttribute="top" constant="32" id="aCD-hh-nGS"/>
                 <constraint firstItem="Fyj-l9-3ol" firstAttribute="leading" secondItem="6Dr-Bt-JgN" secondAttribute="leading" constant="24" id="bhr-c3-Abu"/>
                 <constraint firstItem="6Dr-Bt-JgN" firstAttribute="trailing" secondItem="Fyj-l9-3ol" secondAttribute="trailing" constant="24" id="c9G-Az-WIV"/>
                 <constraint firstItem="89M-Bn-WS9" firstAttribute="leading" secondItem="6Dr-Bt-JgN" secondAttribute="leading" constant="24" id="cfx-qt-u9y"/>
@@ -95,6 +95,6 @@
         </view>
     </objects>
     <resources>
-        <image name="img_graphics_notification" width="140" height="140"/>
+        <image name="img_graphics_notification" width="64" height="64"/>
     </resources>
 </document>

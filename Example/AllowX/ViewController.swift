@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let permission: AllowX = .camera
+        AllowX.primaryColor = UIColor.systemPink
+        let permission: AllowX = .notifications
 
         print(permission.status) // .notDetermined
 

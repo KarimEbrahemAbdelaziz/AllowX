@@ -67,6 +67,9 @@ public class AllowX: NSObject {
         }
     }
     
+    /// The primaryColor for confirm button background color.
+    public static var primaryColor: UIColor = UIColor.cyan
+    
     /// Determines whether to present the pre-permission alert.
     public var presentPrePermissionAlert = true
     
