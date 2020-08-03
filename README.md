@@ -55,22 +55,59 @@ pod 'AllowX', '~> 1.0.0'
 
 ## Usage
 
+AllowX supports 3 kinds of permissions (for now).
+
 ```swift
-let permission: AllowX = AllowX(type: .camera)
+// AllowX Camera Permission.
+let cameraPermission: AllowX = AllowX(type: .camera)
 
-permission.image = UIImage(named: "camera")
-permission.title = "Camera Custom Access"
-permission.message = "Please give us permission to capture your awesome moments."
-permission.cancelButtonTitle = "Cancel"
-permission.notNowButtonTitle = "Not now"
-permission.goToSettingsButtonTitle = "Go to Settings"
-permission.confirmButtonTitle = "Allow Permission"
+// AllowX Location Always Permission.
+let locationAlwaysPermission: AllowX = AllowX(type: .locationAlways)
 
-permission.presentPrePermissionAlert = true
-permission.presentDeniedAlert = true
-permission.presentDisabledAlert = true
+// AllowX Location While in Use Permission.
+let locationWhileInUsePermission: AllowX = AllowX(type: .locationWhenInUse)
 
-permission.request { status in
+// AllowX Notifications Permission.
+let notificationsPermission: AllowX = AllowX(type: .notifications([.alert, .badge, .sound]))
+```
+
+There are defaults for every value in the permission dialog, but you can change all of them using these properties:
+
+```swift
+// AllowX Permission Dialog Image.
+cameraPermission.image = UIImage(named: "camera")
+
+// AllowX Permission Dialog Title.
+cameraPermission.title = "Camera Custom Access"
+
+// AllowX Permission Dialog Message.
+cameraPermission.message = "Please give us permission to capture your awesome moments."
+
+// AllowX Permission Dialog Cancel Button's Title.
+cameraPermission.cancelButtonTitle = "Cancel"
+
+// AllowX Permission Dialog NotNow Button's Title.
+cameraPermission.notNowButtonTitle = "Not now"
+
+// AllowX Permission Dialog Go to Settings Button's Title.
+cameraPermission.goToSettingsButtonTitle = "Go to Settings"
+
+// AllowX Permission Dialog Confirm Button's Title.
+cameraPermission.confirmButtonTitle = "Allow Permission"
+```
+
+By default AllowX will ask for permission and present corresponding dialog for the permission's status, but you can disable presenting those dialogs
+
+```swift
+cameraPermission.presentPrePermissionAlert = true
+cameraPermission.presentDeniedAlert = true
+cameraPermission.presentDisabledAlert = true
+```
+
+You can specifiy a block of code to be excuted when you ask about permission's status
+
+```swift
+cameraPermission.request { status in
     switch status {
     case .authorized:    print("authorized")
     case .denied:        print("denied")
