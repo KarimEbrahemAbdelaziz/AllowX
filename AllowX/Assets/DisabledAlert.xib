@@ -37,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Enable push notifications to let send you personal news and updates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdx-xh-r73">
-                    <rect key="frame" x="24" y="153" width="366" height="38.5"/>
+                    <rect key="frame" x="24" y="157" width="366" height="38.5"/>
                     <accessibility key="accessibilityConfiguration" identifier="action_alert_description_label"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <nil key="textColor"/>
@@ -78,7 +78,7 @@
                 <constraint firstItem="hBW-Te-Ugv" firstAttribute="trailing" secondItem="BVm-OP-duP" secondAttribute="trailing" constant="32" id="U46-xw-3od"/>
                 <constraint firstItem="hBW-Te-Ugv" firstAttribute="trailing" secondItem="iKz-kC-rQv" secondAttribute="trailing" constant="24" id="Y9X-nm-wEn"/>
                 <constraint firstItem="hBW-Te-Ugv" firstAttribute="trailing" secondItem="8eV-XI-aTi" secondAttribute="trailing" constant="24" id="dZP-ra-phC"/>
-                <constraint firstItem="Wdx-xh-r73" firstAttribute="top" secondItem="BVm-OP-duP" secondAttribute="bottom" constant="4" id="gfA-vm-ar9"/>
+                <constraint firstItem="Wdx-xh-r73" firstAttribute="top" secondItem="BVm-OP-duP" secondAttribute="bottom" constant="8" id="gfA-vm-ar9"/>
                 <constraint firstItem="JYB-gV-zr5" firstAttribute="top" secondItem="Upg-Wd-CMX" secondAttribute="top" constant="32" id="m0Y-TT-bF3"/>
                 <constraint firstItem="BVm-OP-duP" firstAttribute="leading" secondItem="hBW-Te-Ugv" secondAttribute="leading" constant="32" id="oxI-wm-IaZ"/>
                 <constraint firstItem="hBW-Te-Ugv" firstAttribute="bottom" secondItem="iKz-kC-rQv" secondAttribute="bottom" constant="32" id="sSV-qP-7QD"/>
