@@ -35,7 +35,7 @@ AllowX exposes a unified API to request permissions on iOS with awesome dialog f
 
 ## Screenshots
 
-<img src="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/1.png" width="250" height="500"> <img src="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/2.png" width="250" height="500"> <img src="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/3.png" width="250" height="500">
+<img src="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/1.png" width="250" height="500"> <img src="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/2.png" width="250" height="500"> <img src="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/3.png" width="250" height="500"> <img src="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/Screenshots/4.png" width="250" height="500">
 
 ## Requirements
 
