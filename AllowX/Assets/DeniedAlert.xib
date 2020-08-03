@@ -37,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Enable push notifications to let send you personal news and updates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIt-1Y-mj0">
-                    <rect key="frame" x="24" y="153" width="366" height="38.5"/>
+                    <rect key="frame" x="24" y="157" width="366" height="38.5"/>
                     <accessibility key="accessibilityConfiguration" identifier="action_alert_description_label"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <nil key="textColor"/>
@@ -74,7 +74,7 @@
                 <constraint firstItem="ggz-yt-oKN" firstAttribute="leading" secondItem="CeZ-am-AB7" secondAttribute="leading" constant="32" id="MB5-BP-whb"/>
                 <constraint firstItem="CeZ-am-AB7" firstAttribute="trailing" secondItem="ggz-yt-oKN" secondAttribute="trailing" constant="32" id="NqR-4J-eZP"/>
                 <constraint firstItem="6Ya-tp-kvP" firstAttribute="centerX" secondItem="Gvo-vf-l4y" secondAttribute="centerX" id="OQZ-Am-clv"/>
-                <constraint firstItem="qIt-1Y-mj0" firstAttribute="top" secondItem="ggz-yt-oKN" secondAttribute="bottom" constant="4" id="Tgu-0H-pSN"/>
+                <constraint firstItem="qIt-1Y-mj0" firstAttribute="top" secondItem="ggz-yt-oKN" secondAttribute="bottom" constant="8" id="Tgu-0H-pSN"/>
                 <constraint firstItem="hbf-ca-H0n" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qIt-1Y-mj0" secondAttribute="bottom" constant="32" id="Zfw-t9-BWg"/>
                 <constraint firstItem="ggz-yt-oKN" firstAttribute="top" secondItem="6Ya-tp-kvP" secondAttribute="bottom" constant="24" id="Zi5-3b-tXh"/>
                 <constraint firstItem="qIt-1Y-mj0" firstAttribute="leading" secondItem="CeZ-am-AB7" secondAttribute="leading" constant="24" id="htM-Y3-cGy"/>

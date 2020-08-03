@@ -18,29 +18,33 @@ class DeniedAlert: UIView {
     
     /// The permission.
     fileprivate var permission: AllowX?
-
+    
     /// The status of the permission.
     fileprivate var status: AllowXStatus? { return permission?.status }
-
+    
     /// The type of the permission.
     private var type: AllowXType? { return permission?.type }
-
+    
     fileprivate var callbacks: AllowX.Callback? { return permission?.callbacks }
-
+    
     /// The image of the alert.
     open var image: UIImage? {
-        guard let type = type else {
-            return nil
+        guard let image = permission?.image else {
+            guard let type = type else {
+                return nil
+            }
+            
+            switch type {
+            case .camera:
+                return permission?.cameraPermissionImage
+            case .locationAlways, .locationWhenInUse:
+                return permission?.locationPermissionImage
+            case .notifications:
+                return permission?.notificationPermissionImage
+            }
         }
         
-        switch type {
-        case .camera:
-            return UIImage(named: "img_graphics_no_search_results_1", in: Bundle(for: AllowX.self), compatibleWith: nil)
-        case .locationAlways, .locationWhenInUse:
-            return UIImage(named: "img_graphics_map", in: Bundle(for: AllowX.self), compatibleWith: nil)
-        case .notifications:
-            return UIImage(named: "img_graphics_notification", in: Bundle(for: AllowX.self), compatibleWith: nil)
-        }
+        return image
     }
     
     /// The title of the alert.
@@ -51,14 +55,14 @@ class DeniedAlert: UIView {
         
         switch type {
         case .camera:
-            return "Camera Access"
+            return permission?.title ?? "Camera Access"
         case .locationAlways, .locationWhenInUse:
-            return "Location Access"
+            return permission?.title ?? "Location Access"
         case .notifications:
-            return "Notification Access"
+            return permission?.title ?? "Notification Access"
         }
     }
-
+    
     /// Descriptive text that provides more details about the reason for the alert.
     open var message: String? {
         guard let type = type else {
@@ -67,14 +71,14 @@ class DeniedAlert: UIView {
         
         switch type {
         case .camera:
-            return "To capture awesome photos of you."
+            return permission?.message ?? "To capture awesome photos of you."
         case .locationAlways, .locationWhenInUse:
-            return "Please enable location access to use this feature"
+            return  permission?.message ?? "Please enable location access to use this feature"
         case .notifications:
-            return "Enable push notifications to let send you personal news and updates"
+            return  permission?.message ?? "Enable push notifications to let us send you personal news and updates"
         }
     }
-
+    
     /// The title of the cancel action.
     open var cancel: String? {
         guard let status = status else {
@@ -85,14 +89,14 @@ class DeniedAlert: UIView {
         case .authorized:
             return nil
         case .denied:
-            return "Cancel"
+            return permission?.cancelButtonTitle ?? "Cancel"
         case .disabled:
-            return "Cancel"
+            return permission?.cancelButtonTitle ?? "Cancel"
         case .notDetermined:
-            return "Not Now"
+            return permission?.notNowButtonTitle ?? "Not Now"
         }
     }
-
+    
     /// The title of the confirm action.
     open var confirm: String? {
         guard let status = status else {
@@ -103,11 +107,11 @@ class DeniedAlert: UIView {
         case .authorized:
             return nil
         case .denied:
-            return "Go to Settings"
+            return permission?.goToSettingsButtonTitle ?? "Go to Settings"
         case .disabled:
-            return "Go to Settings"
+            return permission?.goToSettingsButtonTitle ?? "Go to Settings"
         case .notDetermined:
-            return "Enable"
+            return permission?.confirmButtonTitle ?? "Allow"
         }
     }
     
@@ -146,7 +150,7 @@ class DeniedAlert: UIView {
     
     @IBAction private func doneButtonTapped(_ sender: Any) {
         NotificationCenter.default.addObserver(self, selector: #selector(settingsHandler), name: UIApplication.didBecomeActiveNotification)
-
+        
         if let URL = URL(string: UIApplication.openSettingsURLString) {
             UIApplication.shared.open(URL)
         }
