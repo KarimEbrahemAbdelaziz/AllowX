@@ -54,6 +54,9 @@ public class AllowX: NSObject {
     /// The notification permission default image.
     internal let notificationPermissionImage: UIImage = UIImage(named: "img_graphics_notification", in: Bundle(for: AllowX.self), compatibleWith: nil)!
     
+    /// The permission alert height.
+    public var alertHeight: EKAttributes.PositionConstraints.Edge = .intrinsic
+    
     /// The permission image.
     public var image: UIImage?
     
@@ -164,11 +167,11 @@ public class AllowX: NSObject {
         attributes.positionConstraints.verticalOffset = 10
         attributes.positionConstraints.size = .init(
             width: .offset(value: 20),
-            height: .intrinsic
+            height: alertHeight
         )
         attributes.positionConstraints.maxSize = .init(
             width: .constant(value: UIScreen.main.minEdge),
-            height: .intrinsic
+            height: alertHeight
         )
         attributes.statusBar = .ignored
         return attributes
