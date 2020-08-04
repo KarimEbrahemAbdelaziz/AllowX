@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         
         let permission: AllowX = AllowX(type: .camera)
         
+        permission.alertHeight = .constant(value: 400)
         permission.image = UIImage(named: "camera")
         permission.title = "Camera Custom Access"
         permission.message = "Please give us permission to capture your awesome moments."
