@@ -107,11 +107,12 @@ public class AllowX: NSObject {
     private var attributes: EKAttributes {
         var attributes = EKAttributes()
         attributes = .centerFloat
+        attributes.scroll = .disabled
         attributes.screenBackground = .color(color: .dimmedLightBackground)
         attributes.displayMode = .light
         attributes.hapticFeedbackType = .success
         attributes.displayDuration = .infinity
-        attributes.screenInteraction = .dismiss
+        attributes.screenInteraction = .absorbTouches
         attributes.entryInteraction = .absorbTouches
         attributes.entranceAnimation = .init(
             translate: .init(
