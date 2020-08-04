@@ -108,7 +108,7 @@ public class AllowX: NSObject {
         attributes.displayMode = .light
         attributes.hapticFeedbackType = .success
         attributes.displayDuration = .infinity
-        attributes.screenInteraction = .forward
+        attributes.screenInteraction = .dismiss
         attributes.entryInteraction = .absorbTouches
         attributes.entranceAnimation = .init(
             translate: .init(
