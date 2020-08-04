@@ -74,6 +74,10 @@ let notificationsPermission: AllowX = AllowX(type: .notifications([.alert, .badg
 There are defaults for every value in the permission dialog, but you can change all of them using these properties:
 
 ```swift
+// AllowX Permission Alert Height.
+// The default value is .intrinsic to adapt on the content.
+cameraPermission.alertHeight = .constant(value: 400)
+
 // AllowX Permission Dialog Image.
 cameraPermission.image = UIImage(named: "camera")
 
