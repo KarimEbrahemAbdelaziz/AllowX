@@ -1,5 +1,5 @@
 PODS:
-  - AllowX (0.1.0):
+  - AllowX (1.1.0):
     - SwiftEntryKit (= 1.2.3)
   - QuickLayout (3.0.0)
   - SwiftEntryKit (1.2.3):
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AllowX: 0d82d81b90d0f30e62234301223e46391c7432e6
+  AllowX: c909e71dcf84275cc879bd6506ab6d1d5cd12989
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
 
