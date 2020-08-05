@@ -56,18 +56,18 @@ public class PrimaryButton: UIButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        setupBoxFoodPrimaryButtonStyle()
+        setupPrimaryButtonStyle()
     }
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
 
-        setupBoxFoodPrimaryButtonStyle()
+        setupPrimaryButtonStyle()
     }
 
     // MARK: - Private Functions
 
-    private func setupBoxFoodPrimaryButtonStyle() {
+    private func setupPrimaryButtonStyle() {
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         backgroundColor = AllowX.primaryColor

@@ -55,18 +55,18 @@ public class LinkButton: UIButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        setupBoxFoodLinkButtonStyle()
+        setupLinkButtonStyle()
     }
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
 
-        setupBoxFoodLinkButtonStyle()
+        setupLinkButtonStyle()
     }
 
     // MARK: - Private Functions
 
-    private func setupBoxFoodLinkButtonStyle() {
+    private func setupLinkButtonStyle() {
         setTitleColor(AllowX.primaryColor, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         backgroundColor = .white
