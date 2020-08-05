@@ -8,7 +8,7 @@
     <a href="https://cocoadocs.org/pods/AllowX/">
         <img src="http://img.shields.io/badge/Cocoapods-available-green.svg?style=flat" alt="Cocoapod" />
     </a>
-    <img src="http://img.shields.io/badge/version-1.0.3-green.svg?style=flat" alt="Version" />
+    <img src="http://img.shields.io/badge/version-1.1.0-green.svg?style=flat" alt="Version" />
     <a href="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/LICENSE">
         <img src="http://img.shields.io/badge/license-MIT-70a1fb.svg?style=flat" alt="MIT License" />
     </a>
@@ -50,17 +50,130 @@ AllowX exposes a unified API to request permissions on iOS with awesome dialog f
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate AllowX into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AllowX', '~> 1.0.3'
+pod 'AllowX', '~> 1.1.0'
 ```
 
 ## Usage
 
-AllowX supports 3 kinds of permissions (for now).
+AllowX provide configuration protocol `AllowXConfiguration` to allow you configure all status titles and messages. All you have to do to configure permission alert is to create custom configuration class that conform to `AllowXConfiguration` protocol.
 
 ```swift
-// AllowX Camera Permission.
-let cameraPermission: AllowX = AllowX(type: .camera)
+class CustomCameraConfiguration: AllowXConfiguration {
+    // AllowX Permission Alert Height.
+    var alertHeight: EKAttributes.PositionConstraints.Edge {
+        return .constant(value: 400)
+    }
+    
+    // AllowX Permission Alert Image.
+    var image: UIImage {
+        return UIImage(named: "camera")!
+    }
+    
+    // AllowX Pre-Permission Alert Title.
+    var prePermissionTitle: String {
+        return "Camera Permission"
+    }
+    
+    // AllowX Denied Permission Alert Title.
+    var deniedTitle: String {
+        return "Camera Permission"
+    }
+    
+    // AllowX Disabled Permission Alert Title.
+    var disabledTitle: String {
+        return "Camera Permission"
+    }
+    
+    // AllowX Permission Alert Title's Font.
+    var titleFont: UIFont {
+        return .boldSystemFont(ofSize: 16)
+    }
+    
+    // AllowX Permission Alert Title's Color.
+    var titleColor: UIColor {
+        return .darkGray
+    }
+    
+    // AllowX Pre-Permission Alert Message.
+    var prePermissionMessage: String {
+        return "Please, To scan codes, allow us to access your camera"
+    }
+    
+    // AllowX Denied Permission Alert Message.
+    var deniedMessage: String {
+        return "Please, To scan codes, allow us to access your camera"
+    }
+    
+    // AllowX Disabled Permission Alert Message.
+    var disabledMessage: String {
+        return "Please, To scan codes, allow us to access your camera"
+    }
+    
+    // AllowX Permission Alert Message's Font.
+    var messageFont: UIFont {
+        return .systemFont(ofSize: 16)
+    }
+    
+    // AllowX Permission Alert Message's Color.
+    var messageColor: UIColor {
+        return .gray
+    }
+    
+    // AllowX Permission Alert Cancel Button's Title.
+    var cancelButtonTitle: String {
+        return "Cancel"
+    }
+    
+    // AllowX Permission Alert Not Now Button's Title.
+    var notNowButtonTitle: String {
+        return "Not Now"
+    }
+    
+    // AllowX Permission Alert Go to Settings Button's Title.
+    var goToSettingsButtonTitle: String {
+        return "Go to Settings"
+    }
+    
+    // AllowX Permission Alert Confirm Button's Title.
+    var confirmButtonTitle: String {
+        return "Allow"
+    }
+    
+    // AllowX Permission Dialog Button Title's Font.
+    var buttonTitleFont: UIFont {
+        return .systemFont(ofSize: 16)
+    }
+    
+    // Control if you want to present Pre-Premission Alert.
+    var presentPrePermissionAlert: Bool {
+        return true
+    }
+    
+    // Control if you want to present Denied Alert.
+    var presentDeniedAlert: Bool {
+        return true
+    }
+    
+    // Control if you want to present Disabled Alert.
+    var presentDisabledAlert: Bool {
+        return true
+    }
+}
+```
 
+Init AllowX permission with configuration. (There're default configuration  values for each permission)
+
+```swift
+// Create AllowX Camera Permission Configuration.
+let configuration = CustomCameraConfiguration()
+
+// AllowX Camera Permission.
+let cameraPermission: AllowX = AllowX(type: .camera, configuration: configuration)
+```
+
+AllowX supports 3 kinds of permissions (for now) Camera, Location and Notifications Permissions.
+
+```swift
 // AllowX Location Always Permission.
 let locationAlwaysPermission: AllowX = AllowX(type: .locationAlways)
 
@@ -69,55 +182,6 @@ let locationWhileInUsePermission: AllowX = AllowX(type: .locationWhenInUse)
 
 // AllowX Notifications Permission.
 let notificationsPermission: AllowX = AllowX(type: .notifications([.alert, .badge, .sound]))
-```
-
-There are defaults for every value in the permission dialog, but you can change all of them using these properties:
-
-```swift
-// AllowX Permission Alert Height.
-// The default value is .intrinsic to adapt on the content.
-cameraPermission.alertHeight = .constant(value: 400)
-
-// AllowX Permission Dialog Image.
-cameraPermission.image = UIImage(named: "camera")
-
-// AllowX Permission Dialog Title.
-cameraPermission.title = "Camera Custom Access"
-cameraPermission.titleFont = .boldSystemFont(ofSize: 22)
-cameraPermission.titleColor = . darkGray
-
-// AllowX Permission Dialog Message.
-cameraPermission.message = "Please give us permission to capture your awesome moments."
-cameraPermission.messageFont = .systemFont(ofSize: 16)
-cameraPermission.messageColor = .gray
-
-// AllowX Permission Dialog Cancel Button's Title.
-cameraPermission.cancelButtonTitle = "Cancel"
-
-// AllowX Permission Dialog NotNow Button's Title.
-cameraPermission.notNowButtonTitle = "Not now"
-
-// AllowX Permission Dialog Go to Settings Button's Title.
-cameraPermission.goToSettingsButtonTitle = "Go to Settings"
-
-// AllowX Permission Dialog Confirm Button's Title.
-cameraPermission.confirmButtonTitle = "Allow Permission"
-
-// AllowX Permission Dialog Button Title's Font.
-cameraPermission.buttonTitleFont = .boldSystemFont(ofSize: 14)
-```
-
-By default AllowX will ask for permission and present corresponding dialog for the permission's status, but you can disable presenting those dialogs
-
-```swift
-// Control if you want to present Pre-Premission dialog.
-cameraPermission.presentPrePermissionAlert = true
-
-// Control if you want to present Denied dialog.
-cameraPermission.presentDeniedAlert = true
-
-// Control if you want to present Disabled dialog.
-cameraPermission.presentDisabledAlert = true
 ```
 
 You can specifiy a block of code to be excuted when you ask about permission's status
