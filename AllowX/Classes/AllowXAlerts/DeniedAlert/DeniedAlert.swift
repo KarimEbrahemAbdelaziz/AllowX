@@ -149,16 +149,22 @@ class DeniedAlert: UIView {
         fromNib()
         
         clipsToBounds = true
-        layer.cornerRadius = 5
+        layer.cornerRadius = 16
         configure()
     }
     
     private func configure() {
         self.iconImageView.image = image
         self.titleLabel.text = title
+        self.titleLabel.font = permission?.titleFont
+        self.titleLabel.textColor = permission?.titleColor
         self.messageLabel.text = message
+        self.messageLabel.font = permission?.messageFont
+        self.messageLabel.textColor = permission?.messageColor
         self.dismissButton.setTitle(cancel, for: .normal)
+        self.dismissButton.titleLabel?.font = permission?.buttonTitleFont
         self.doneButton.setTitle(confirm, for: .normal)
+        self.doneButton.titleLabel?.font = permission?.buttonTitleFont
     }
     
     @IBAction private func dismissButtonTapped(_ sender: Any) {
