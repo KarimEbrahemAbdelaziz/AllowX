@@ -8,7 +8,7 @@
     <a href="https://cocoadocs.org/pods/AllowX/">
         <img src="http://img.shields.io/badge/Cocoapods-available-green.svg?style=flat" alt="Cocoapod" />
     </a>
-    <img src="http://img.shields.io/badge/version-1.0.2-green.svg?style=flat" alt="Version" />
+    <img src="http://img.shields.io/badge/version-1.0.3-green.svg?style=flat" alt="Version" />
     <a href="https://github.com/KarimEbrahemAbdelaziz/AllowX/blob/master/LICENSE">
         <img src="http://img.shields.io/badge/license-MIT-70a1fb.svg?style=flat" alt="MIT License" />
     </a>
@@ -50,7 +50,7 @@ AllowX exposes a unified API to request permissions on iOS with awesome dialog f
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate AllowX into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AllowX', '~> 1.0.2'
+pod 'AllowX', '~> 1.0.3'
 ```
 
 ## Usage
@@ -83,9 +83,13 @@ cameraPermission.image = UIImage(named: "camera")
 
 // AllowX Permission Dialog Title.
 cameraPermission.title = "Camera Custom Access"
+cameraPermission.titleFont = .boldSystemFont(ofSize: 22)
+cameraPermission.titleColor = . darkGray
 
 // AllowX Permission Dialog Message.
 cameraPermission.message = "Please give us permission to capture your awesome moments."
+cameraPermission.messageFont = .systemFont(ofSize: 16)
+cameraPermission.messageColor = .gray
 
 // AllowX Permission Dialog Cancel Button's Title.
 cameraPermission.cancelButtonTitle = "Cancel"
@@ -98,6 +102,9 @@ cameraPermission.goToSettingsButtonTitle = "Go to Settings"
 
 // AllowX Permission Dialog Confirm Button's Title.
 cameraPermission.confirmButtonTitle = "Allow Permission"
+
+// AllowX Permission Dialog Button Title's Font.
+cameraPermission.buttonTitleFont = .boldSystemFont(ofSize: 14)
 ```
 
 By default AllowX will ask for permission and present corresponding dialog for the permission's status, but you can disable presenting those dialogs
