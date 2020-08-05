@@ -26,13 +26,12 @@ import Foundation
 import SwiftEntryKit
 
 class DefaultAllowXCameraConfiguration: AllowXConfiguration {
-    
     var alertHeight: EKAttributes.PositionConstraints.Edge {
         return .intrinsic
     }
     
     var image: UIImage {
-        return UIImage(named: "")!
+        return UIImage(named: "img_graphics_no_search_results_1", in: Bundle(for: AllowX.self), compatibleWith: nil)!
     }
     
     var prePermissionTitle: String {
@@ -56,15 +55,15 @@ class DefaultAllowXCameraConfiguration: AllowXConfiguration {
     }
     
     var prePermissionMessage: String {
-        return "We need Camera Permission to capture awesome photos of you."
+        return "To capture image, allow us to access your camera"
     }
     
     var deniedMessage: String {
-        return "We need Camera Permission to capture awesome photos of you."
+        return "To capture image, allow us to access your camera"
     }
     
     var disabledMessage: String {
-        return "We need Camera Permission to capture awesome photos of you."
+        return "To capture image, allow us to access your camera"
     }
     
     var messageFont: UIFont {
@@ -88,10 +87,22 @@ class DefaultAllowXCameraConfiguration: AllowXConfiguration {
     }
     
     var confirmButtonTitle: String {
-        return "Allow Camera"
+        return "Allow"
     }
     
     var buttonTitleFont: UIFont {
         return .systemFont(ofSize: 16)
+    }
+    
+    var presentPrePermissionAlert: Bool {
+        return true
+    }
+    
+    var presentDeniedAlert: Bool {
+        return true
+    }
+    
+    var presentDisabledAlert: Bool {
+        return true
     }
 }

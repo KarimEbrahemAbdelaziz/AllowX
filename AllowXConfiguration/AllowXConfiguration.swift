@@ -76,4 +76,13 @@ public protocol AllowXConfiguration {
     
     /// The notification permission cancel button title.
     var buttonTitleFont: UIFont { get }
+    
+    /// Determines whether to present the pre-permission alert.
+    var presentPrePermissionAlert: Bool { get }
+    
+    /// Determines whether to present the denied alert.
+    var presentDeniedAlert: Bool { get }
+    
+    /// Determines whether to present the disabled alert.
+    var presentDisabledAlert: Bool { get }
 }

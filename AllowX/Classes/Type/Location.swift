@@ -25,7 +25,7 @@
 import Foundation
 import CoreLocation
 
-let LocationManager = CLLocationManager()
+internal let LocationManager = CLLocationManager()
 
 private var requestedLocation = false
 private var triggerCallbacks  = false
