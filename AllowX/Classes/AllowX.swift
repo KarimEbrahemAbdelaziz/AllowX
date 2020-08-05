@@ -45,76 +45,22 @@ public class AllowX: NSObject {
     /// The primaryColor for confirm button background color.
     public static var primaryColor: UIColor = UIColor.systemBlue
     
-    /// The camera permission default image.
-    internal let cameraPermissionImage: UIImage = UIImage(named: "img_graphics_no_search_results_1", in: Bundle(for: AllowX.self), compatibleWith: nil)!
-    
-    /// The location permission default image.
-    internal let locationPermissionImage: UIImage = UIImage(named: "img_graphics_map", in: Bundle(for: AllowX.self), compatibleWith: nil)!
-    
-    /// The notification permission default image.
-    internal let notificationPermissionImage: UIImage = UIImage(named: "img_graphics_notification", in: Bundle(for: AllowX.self), compatibleWith: nil)!
-    
-    /// The permission alert height.
-    public var alertHeight: EKAttributes.PositionConstraints.Edge = .intrinsic
-    
-    /// The permission image.
-    public var image: UIImage?
-    
-    /// The notification permission title.
-    public var title: String?
-    
-    /// The notification permission title font.
-    public var titleFont: UIFont?
-    
-    /// The notification permission title color.
-    public var titleColor: UIColor?
-    
-    /// The notification permission message.
-    public var message: String?
-    
-    /// The notification permission message font.
-    public var messageFont: UIFont?
-    
-    /// The notification permission message color.
-    public var messageColor: UIColor?
-    
-    /// The notification permission cancel button title.
-    public var cancelButtonTitle: String?
-    
-    /// The notification permission not now button title.
-    public var notNowButtonTitle: String?
-    
-    /// The notification permission go to settings button title.
-    public var goToSettingsButtonTitle: String?
-    
-    /// The notification permission allow button title.
-    public var confirmButtonTitle: String?
-    
-    /// The notification permission cancel button title.
-    public var buttonTitleFont: UIFont?
-    
-    /// Determines whether to present the pre-permission alert.
-    public var presentPrePermissionAlert = true
+    /// The permission configuration.
+    internal let configuration: AllowXConfiguration
     
     /// The pre-permission alert.
     lazy var prePermissionAlert: PrePermissionAlert = {
-        return PrePermissionAlert(permission: self)
+        return PrePermissionAlert(permission: self, configuration: configuration)
     }()
-    
-    /// Determines whether to present the denied alert.
-    public var presentDeniedAlert = true
     
     /// The alert when the permission was denied.
     lazy var deniedAlert: DeniedAlert = {
-        return DeniedAlert(permission: self)
+        return DeniedAlert(permission: self, configuration: configuration)
     }()
-    
-    /// Determines whether to present the disabled alert.
-    public var presentDisabledAlert = true
     
     /// The alert when the permission is disabled.
     lazy var disabledAlert: DisabledAlert = {
-        return DisabledAlert(permission: self)
+        return DisabledAlert(permission: self, configuration: configuration)
     }()
     
     var callback: Callback?
@@ -183,11 +129,11 @@ public class AllowX: NSObject {
         attributes.positionConstraints.verticalOffset = 10
         attributes.positionConstraints.size = .init(
             width: .offset(value: 20),
-            height: alertHeight
+            height: configuration.alertHeight
         )
         attributes.positionConstraints.maxSize = .init(
             width: .constant(value: UIScreen.main.minEdge),
-            height: alertHeight
+            height: configuration.alertHeight
         )
         attributes.statusBar = .ignored
         return attributes
@@ -200,8 +146,21 @@ public class AllowX: NSObject {
      
      - returns: A newly created permission.
      */
-    public init(type: AllowXType) {
+    public init(type: AllowXType, configuration: AllowXConfiguration? = nil) {
         self.type = type
+        guard let configuration = configuration else {
+            switch type {
+            case .camera:
+                self.configuration = DefaultAllowXCameraConfiguration()
+            case .locationAlways, .locationWhenInUse:
+                self.configuration = DefaultAllowXLocationConfiguration()
+            case .notifications:
+                self.configuration = DefaultAllowXNotificationConfiguration()
+            }
+            return
+        }
+        
+        self.configuration = configuration
     }
     
     /**
@@ -218,11 +177,11 @@ public class AllowX: NSObject {
         case .authorized:
             callbacks(status)
         case .notDetermined:
-            presentPrePermissionAlert ? showPrePermissionAlert() : requestAuthorization(callbacks)
+            configuration.presentPrePermissionAlert ? showPrePermissionAlert() : requestAuthorization(callbacks)
         case .denied:
-            presentDeniedAlert ? showDeniedAlert() : callbacks(status)
+            configuration.presentDeniedAlert ? showDeniedAlert() : callbacks(status)
         case .disabled:
-            presentDisabledAlert ? showDisabledAlert() : callbacks(status)
+            configuration.presentDisabledAlert ? showDisabledAlert() : callbacks(status)
         }
     }
     
