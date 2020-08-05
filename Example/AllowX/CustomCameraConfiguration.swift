@@ -40,15 +40,15 @@ class CustomCameraConfiguration: AllowXConfiguration {
     }
     
     var prePermissionMessage: String {
-        return "Please, To scan codes, allow us to access your camera"
+        return "Please, To scan codes, allow us to access your camera Please, To scan codes, allow us to access your camera"
     }
     
     var deniedMessage: String {
-        return "Please, To scan codes, allow us to access your camera"
+        return "Please, To scan codes, allow us to access your camera Please, To scan codes, allow us to access your camera"
     }
     
     var disabledMessage: String {
-        return "Please, To scan codes, allow us to access your camera"
+        return "Please, To scan codes, allow us to access your camera Please, To scan codes, allow us to access your camera"
     }
     
     var messageFont: UIFont {
