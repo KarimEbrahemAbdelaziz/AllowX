@@ -63,8 +63,20 @@ public class AllowX: NSObject {
     /// The notification permission title.
     public var title: String?
     
+    /// The notification permission title font.
+    public var titleFont: UIFont?
+    
+    /// The notification permission title color.
+    public var titleColor: UIColor?
+    
     /// The notification permission message.
     public var message: String?
+    
+    /// The notification permission message font.
+    public var messageFont: UIFont?
+    
+    /// The notification permission message color.
+    public var messageColor: UIColor?
     
     /// The notification permission cancel button title.
     public var cancelButtonTitle: String?
@@ -77,6 +89,9 @@ public class AllowX: NSObject {
     
     /// The notification permission allow button title.
     public var confirmButtonTitle: String?
+    
+    /// The notification permission cancel button title.
+    public var buttonTitleFont: UIFont?
     
     /// Determines whether to present the pre-permission alert.
     public var presentPrePermissionAlert = true
