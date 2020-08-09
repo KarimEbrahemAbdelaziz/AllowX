@@ -1,0 +1,27 @@
+PODS:
+  - AllowX (1.1.0):
+    - SwiftEntryKit (= 1.2.3)
+  - QuickLayout (3.0.0)
+  - SwiftEntryKit (1.2.3):
+    - QuickLayout (= 3.0.0)
+
+DEPENDENCIES:
+  - AllowX (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - QuickLayout
+    - SwiftEntryKit
+
+EXTERNAL SOURCES:
+  AllowX:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AllowX: c909e71dcf84275cc879bd6506ab6d1d5cd12989
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
+
+PODFILE CHECKSUM: 7334fcae3b0baa352064d1c2abefd8545e2efbca
+
+COCOAPODS: 1.9.3

@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AllowX_Example' do
+  pod 'AllowX', :path => '../'
+
+  target 'AllowX_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
